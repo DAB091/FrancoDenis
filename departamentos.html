@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Departamentos – GrupoDen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rojo: #C8102E; --rojo-oscuro: #a00d24;
+      --gris: #2b2b2b; --gris-medio: #555;
+      --blanco: #ffffff; --crema: #f8f6f3; --borde: #e0dbd5;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Barlow', sans-serif; color: var(--gris); background: var(--blanco); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px; background: var(--blanco);
+      border-bottom: 1px solid var(--borde);
+    }
+    .logo img { height: 44px; width: auto; }
+    .logo-placeholder { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; }
+    .logo-placeholder span { color: var(--rojo); }
+    nav ul { list-style: none; display: flex; gap: 28px; align-items: center; }
+    nav ul a {
+      text-decoration: none; color: var(--gris-medio);
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul a:hover, nav ul a.active { color: var(--rojo); }
+    .nav-cta {
+      background: var(--rojo) !important; color: var(--blanco) !important;
+      padding: 9px 20px; border-radius: 2px;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: linear-gradient(135deg, var(--gris) 0%, #1a1a1a 100%);
+      padding: 80px 48px 64px; text-align: center; position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=60') center/cover;
+      opacity: 0.12;
+    }
+    .page-header-inner { position: relative; z-index: 2; }
+    .breadcrumb {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--rojo); text-decoration: none; }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 900; color: var(--blanco);
+    }
+    .page-header p {
+      color: rgba(255,255,255,0.65); font-size: 1rem; margin-top: 12px;
+      font-weight: 300; max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .red-bar { height: 4px; background: var(--rojo); }
+
+    /* LISTINGS */
+    .listings { padding: 72px 48px; max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--rojo); font-weight: 600; margin-bottom: 8px;
+    }
+    .listings > h2 {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
+      margin-bottom: 48px; color: var(--gris);
+    }
+    .listings > h2 span { color: var(--rojo); }
+
+    /* PROPERTY ENTRY */
+    .property-entry {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; margin-bottom: 72px;
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.1);
+    }
+    .property-entry:nth-child(even) .property-carousel { order: 2; }
+    .property-entry:nth-child(even) .property-info { order: 1; }
+
+    /* INFO PANEL */
+    .property-info {
+      padding: 48px 40px; background: var(--blanco);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .prop-status {
+      display: inline-block; background: var(--rojo); color: var(--blanco);
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 2px; margin-bottom: 20px;
+    }
+    .prop-status.alquiler { background: #2563eb; }
+    .property-info h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.7rem;
+      font-weight: 700; margin-bottom: 6px; line-height: 1.2;
+    }
+    .prop-location {
+      font-size: 0.85rem; color: var(--gris-medio); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .prop-location::before { content: '📍'; font-size: 0.9rem; }
+    .prop-price {
+      font-size: 1.6rem; font-weight: 700; color: var(--rojo);
+      font-family: 'Playfair Display', serif; margin-bottom: 20px;
+    }
+    .prop-price small { font-size: 0.75rem; color: var(--gris-medio); font-family: 'Barlow', sans-serif; font-weight: 400; }
+    .divider { height: 1px; background: var(--borde); margin: 20px 0; }
+    .property-info p {
+      font-size: 0.92rem; color: var(--gris-medio); line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .prop-features {
+      display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 28px;
+    }
+    .feature {
+      font-size: 0.8rem; color: var(--gris); font-weight: 500;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .feature-icon {
+      width: 28px; height: 28px; background: var(--crema);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+    }
+    .btn-contact {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--rojo); color: var(--blanco); text-decoration: none;
+      padding: 14px 28px; border-radius: 2px; font-size: 0.85rem;
+      font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    .btn-contact:hover { background: var(--rojo-oscuro); }
+
+    /* CAROUSEL */
+    .property-carousel { position: relative; overflow: hidden; background: #111; min-height: 380px; }
+    .carousel-track {
+      display: flex; height: 100%;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .carousel-slide {
+      min-width: 100%; height: 100%;
+      position: relative;
+    }
+    .carousel-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .carousel-slide .slide-placeholder {
+      width: 100%; height: 100%; min-height: 380px;
+      background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+      color: rgba(255,255,255,0.3); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .slide-placeholder .icon { font-size: 2.5rem; opacity: 0.4; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.9); border: none; cursor: pointer;
+      font-size: 1rem; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s; z-index: 10;
+    }
+    .carousel-btn:hover { background: var(--rojo); color: var(--blanco); }
+    .carousel-btn.prev { left: 16px; }
+    .carousel-btn.next { right: 16px; }
+    .carousel-dots {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(255,255,255,0.4); cursor: pointer; transition: background 0.2s;
+    }
+    .dot.active { background: var(--blanco); }
+    .photo-count {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(0,0,0,0.5); color: var(--blanco);
+      font-size: 0.72rem; padding: 4px 10px; border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer { background: #1a1a1a; color: rgba(255,255,255,0.7); margin-top: 80px; }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; padding: 64px 48px; max-width: 1200px; margin: 0 auto;
+    }
+    .footer-brand .brand-name {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900;
+      color: var(--blanco); margin-bottom: 4px;
+    }
+    .footer-brand .brand-name span { color: var(--rojo); }
+    .footer-brand .tagline {
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 16px;
+    }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; }
+    .footer-section h4 {
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blanco); font-weight: 600; margin-bottom: 18px;
+    }
+    .footer-section ul { list-style: none; }
+    .footer-section ul li { margin-bottom: 9px; }
+    .footer-section ul a {
+      color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s;
+    }
+    .footer-section ul a:hover { color: var(--rojo); }
+    .social-links { display: flex; gap: 10px; margin-top: 20px; }
+    .social-link {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.8rem;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .social-link:hover { background: var(--rojo); border-color: var(--rojo); color: var(--blanco); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 18px 48px; display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.75rem; color: rgba(255,255,255,0.3);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--rojo); }
+
+    @media(max-width: 900px) {
+      nav { padding: 12px 20px; }
+      nav ul { display: none; }
+      .page-header { padding: 60px 20px 48px; }
+      .listings { padding: 48px 20px; }
+      .property-entry { grid-template-columns: 1fr; }
+      .property-entry:nth-child(even) .property-carousel { order: 1; }
+      .property-entry:nth-child(even) .property-info { order: 2; }
+      .property-carousel { min-height: 260px; }
+      .property-info { padding: 32px 24px; }
+      .footer-top { grid-template-columns: 1fr; padding: 48px 20px; }
+      .footer-bottom { flex-direction: column; gap: 10px; padding: 18px 20px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="logo.png" alt="GrupoDen" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div class="logo-placeholder" style="display:none">Grupo<span>Den</span></div>
+  </div>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="departamentos.html" class="active">Departamentos</a></li>
+    <li><a href="casas.html">Casas</a></li>
+    <li><a href="local-comercial.html">Locales Comerciales</a></li>
+    <li><a href="acerca-de-mi.html">Acerca de mí</a></li>
+    <li><a href="https://wa.me/5493436619727" target="_blank" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="red-bar"></div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Inicio</a> &nbsp;/&nbsp; Departamentos</div>
+    <h1>Departamentos</h1>
+    <p>Unidades modernas y bien ubicadas. Encontrá el departamento que mejor se adapta a tu estilo de vida.</p>
+  </div>
+</div>
+<div class="red-bar"></div>
+
+<main class="listings">
+  <p class="section-tag">En venta</p>
+  <h2>Propiedades disponibles <span>·</span></h2>
+
+  <!-- PROPIEDAD 1 -->
+  <article class="property-entry" id="prop-1">
+    <div class="property-info">
+      <span class="prop-status">En Venta</span>
+      <h3>Departamento 2 ambientes – Céntrico</h3>
+      <div class="prop-location">Victoria, Entre Ríos</div>
+      <div class="prop-price">USD 55.000 <small>/ precio total</small></div>
+      <div class="divider"></div>
+      <p>
+        Luminoso departamento de 2 ambientes ubicado a metros del casco histórico de Victoria. 
+        Cuenta con living-comedor amplio, cocina equipada, dormitorio principal y baño completo. 
+        Piso de porcelanato, aberturas de aluminio con DVH y excelente ventilación natural. 
+        Edificio con ascensor, portería y cochera optativa. Ideal para primera vivienda o inversión.
+      </p>
+      <div class="prop-features">
+        <div class="feature"><div class="feature-icon">🛏</div> 1 Dormitorio</div>
+        <div class="feature"><div class="feature-icon">🚿</div> 1 Baño</div>
+        <div class="feature"><div class="feature-icon">📐</div> 52 m²</div>
+        <div class="feature"><div class="feature-icon">🏢</div> Piso 3</div>
+        <div class="feature"><div class="feature-icon">🅿</div> Cochera Opt.</div>
+      </div>
+      <a href="https://wa.me/5493436619727?text=Hola%20Franco%2C%20me%20interesa%20el%20departamento%202%20ambientes%20c%C3%A9ntrico%20de%20Victoria" target="_blank" class="btn-contact">
+        Consultar por WhatsApp
+      </a>
+    </div>
+    <div class="property-carousel" id="carousel-1">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <div class="slide-placeholder">
+            <div class="icon">📷</div>
+            <span>Foto 1 – Agregar imagen</span>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-placeholder"><div class="icon">📷</div><span>Foto 2 – Agregar imagen</span></div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-placeholder"><div class="icon">📷</div><span>Foto 3 – Agregar imagen</span></div>
+        </div>
+      </div>
+      <button class="carousel-btn prev" onclick="moveCarousel('carousel-1', -1)">‹</button>
+      <button class="carousel-btn next" onclick="moveCarousel('carousel-1', 1)">›</button>
+      <div class="carousel-dots" id="dots-carousel-1">
+        <div class="dot active" onclick="goToSlide('carousel-1', 0)"></div>
+        <div class="dot" onclick="goToSlide('carousel-1', 1)"></div>
+        <div class="dot" onclick="goToSlide('carousel-1', 2)"></div>
+      </div>
+      <div class="photo-count">1 / 3</div>
+    </div>
+  </article>
+
+  <!-- PROPIEDAD 2 -->
+  <article class="property-entry" id="prop-2">
+    <div class="property-info">
+      <span class="prop-status">En Venta</span>
+      <h3>Departamento 3 ambientes – Rosario</h3>
+      <div class="prop-location">Rosario, Santa Fe</div>
+      <div class="prop-price">USD 85.000 <small>/ precio total</small></div>
+      <div class="divider"></div>
+      <p>
+        Espectacular departamento de 3 ambientes en zona residencial de Rosario. 
+        Living-comedor con balcón corrido, cocina integrada de diseño, 2 dormitorios en suite y 
+        baño de visitas. Terminaciones premium: pisos flotantes, mesada de granito y luminarias embutidas. 
+        Edificio con amenities: piscina, SUM y seguridad 24 hs. Excelente inversión.
+      </p>
+      <div class="prop-features">
+        <div class="feature"><div class="feature-icon">🛏</div> 2 Dormitorios</div>
+        <div class="feature"><div class="feature-icon">🚿</div> 2 Baños</div>
+        <div class="feature"><div class="feature-icon">📐</div> 78 m²</div>
+        <div class="feature"><div class="feature-icon">🏊</div> Amenities</div>
+        <div class="feature"><div class="feature-icon">🅿</div> Cochera</div>
+      </div>
+      <a href="https://wa.me/5493436619727?text=Hola%20Franco%2C%20me%20interesa%20el%20departamento%203%20ambientes%20de%20Rosario" target="_blank" class="btn-contact">
+        Consultar por WhatsApp
+      </a>
+    </div>
+    <div class="property-carousel" id="carousel-2">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <div class="slide-placeholder"><div class="icon">📷</div><span>Foto 1 – Agregar imagen</span></div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-placeholder"><div class="icon">📷</div><span>Foto 2 – Agregar imagen</span></div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-placeholder"><div class="icon">📷</div><span>Foto 3 – Agregar imagen</span></div>
+        </div>
+      </div>
+      <button class="carousel-btn prev" onclick="moveCarousel('carousel-2', -1)">‹</button>
+      <button class="carousel-btn next" onclick="moveCarousel('carousel-2', 1)">›</button>
+      <div class="carousel-dots" id="dots-carousel-2">
+        <div class="dot active" onclick="goToSlide('carousel-2', 0)"></div>
+        <div class="dot" onclick="goToSlide('carousel-2', 1)"></div>
+        <div class="dot" onclick="goToSlide('carousel-2', 2)"></div>
+      </div>
+      <div class="photo-count">1 / 3</div>
+    </div>
+  </article>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="brand-name">Grupo<span>Den</span></div>
+      <div class="tagline">Propiedades y Desarrollo</div>
+      <p>Asesoramiento inmobiliario profesional. Matrícula 2609 COCIR · Matrícula 1504 CCPIER.<br>Franco Damián Denis.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/grupo.den" target="_blank" class="social-link">f</a>
+        <a href="https://www.instagram.com/grupo.den" target="_blank" class="social-link">ig</a>
+        <a href="https://wa.me/5493436619727" target="_blank" class="social-link">✉</a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Propiedades</h4>
+      <ul>
+        <li><a href="departamentos.html">Departamentos</a></li>
+        <li><a href="casas.html">Casas</a></li>
+        <li><a href="local-comercial.html">Locales Comerciales</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="acerca-de-mi.html">Acerca de mí</a></li>
+        <li><a href="privacidad.html">Privacidad</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/5493436619727">+549 3436 619727</a></li>
+        <li><a href="mailto:contactogrupoden@gmail.com">contactogrupoden@gmail.com</a></li>
+        <li><a href="#">Victoria, Entre Ríos</a></li>
+        <li><a href="#">Rosario, Santa Fe</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 GrupoDen · Franco Damián Denis</span>
+    <span><a href="privacidad.html">Privacidad</a> &nbsp;·&nbsp; <a href="contacto.html">Contacto</a></span>
+  </div>
+</footer>
+
+<script>
+const carouselState = {};
+function getState(id) {
+  if (!carouselState[id]) carouselState[id] = { current: 0 };
+  return carouselState[id];
+}
+function getTotal(id) {
+  return document.querySelectorAll(`#${id} .carousel-slide`).length;
+}
+function updateCarousel(id) {
+  const state = getState(id);
+  const el = document.querySelector(`#${id} .carousel-track`);
+  const total = getTotal(id);
+  if (el) el.style.transform = `translateX(-${state.current * 100}%)`;
+  const dots = document.querySelectorAll(`#dots-${id} .dot`);
+  dots.forEach((d, i) => d.classList.toggle('active', i === state.current));
+  const count = document.querySelector(`#${id} .photo-count`);
+  if (count) count.textContent = `${state.current + 1} / ${total}`;
+}
+function moveCarousel(id, dir) {
+  const state = getState(id);
+  const total = getTotal(id);
+  state.current = (state.current + dir + total) % total;
+  updateCarousel(id);
+}
+function goToSlide(id, idx) {
+  const state = getState(id);
+  state.current = idx;
+  updateCarousel(id);
+}
+</script>
+</body>
+</html>
