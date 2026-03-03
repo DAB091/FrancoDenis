@@ -3,119 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acerca de mí – GrupoDen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{--rojo:#C8102E;--rojo-oscuro:#a00d24;--gris:#2b2b2b;--gris-medio:#555;--blanco:#ffffff;--crema:#f8f6f3;--borde:#e0dbd5}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Barlow',sans-serif;color:var(--gris);background:var(--blanco)}
-    nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:var(--blanco);border-bottom:1px solid var(--borde)}
-    .logo img{height:44px;width:auto}
-    .logo-placeholder{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900}
-    .logo-placeholder span{color:var(--rojo)}
-    nav ul{list-style:none;display:flex;gap:28px;align-items:center}
-    nav ul a{text-decoration:none;color:var(--gris-medio);font-size:0.85rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s}
-    nav ul a:hover,nav ul a.active{color:var(--rojo)}
-    .nav-cta{background:var(--rojo)!important;color:var(--blanco)!important;padding:9px 20px;border-radius:2px}
-    .red-bar{height:4px;background:var(--rojo)}
-
-    /* HERO BIO */
-    .bio-hero{
-      display:grid;grid-template-columns:1fr 1fr;min-height:500px;
-    }
-    .bio-photo{
-      background:linear-gradient(135deg,#1a1a1a,#2b2b2b);
-      position:relative;overflow:hidden;
-      display:flex;align-items:center;justify-content:center;
-    }
-    .bio-photo::before{
-      content:'';position:absolute;inset:0;
-      background:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80') center/cover;
-      opacity:0.35;
-    }
-    .photo-placeholder{
-      position:relative;z-index:2;text-align:center;
-      color:rgba(255,255,255,0.35);font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;
-    }
-    .photo-placeholder .icon{font-size:3rem;opacity:0.3;display:block;margin-bottom:12px}
-    .red-accent{
-      position:absolute;bottom:0;left:0;right:0;height:5px;background:var(--rojo);z-index:3;
-    }
-    .bio-content{
-      background:var(--crema);padding:72px 60px;display:flex;flex-direction:column;justify-content:center;
-    }
-    .bio-content .eyebrow{
-      font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;
-      color:var(--rojo);font-weight:600;margin-bottom:16px;
-    }
-    .bio-content h1{
-      font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);
-      font-weight:900;color:var(--gris);margin-bottom:6px;line-height:1.1;
-    }
-    .bio-content .subtitle{
-      font-size:0.85rem;color:var(--gris-medio);letter-spacing:0.15em;text-transform:uppercase;
-      margin-bottom:28px;font-weight:500;
-    }
-    .bio-content p{
-      font-size:1rem;color:var(--gris-medio);line-height:1.85;margin-bottom:20px;font-weight:300;
-    }
-    .credentials{display:flex;flex-direction:column;gap:10px;margin:28px 0;}
-    .credential{
-      display:flex;align-items:center;gap:14px;
-      font-size:0.88rem;font-weight:500;color:var(--gris);
-    }
-    .credential-icon{
-      width:34px;height:34px;background:var(--rojo);border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      color:var(--blanco);font-size:0.9rem;flex-shrink:0;
-    }
-    .contact-chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 18px;border:1px solid var(--borde);border-radius:40px;
-      font-size:0.82rem;font-weight:500;text-decoration:none;color:var(--gris);
-      transition:background .2s,border-color .2s,color .2s;
-    }
-    .chip:hover{background:var(--rojo);border-color:var(--rojo);color:var(--blanco)}
-
-    /* VALUES */
-    .values{padding:80px 48px;background:var(--blanco);text-align:center}
-    .values h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:48px}
-    .values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:900px;margin:0 auto}
-    .value-card{padding:32px 24px;border:1px solid var(--borde);border-radius:4px;transition:border-color .2s,transform .2s}
-    .value-card:hover{border-color:var(--rojo);transform:translateY(-4px)}
-    .value-icon{font-size:2rem;margin-bottom:16px}
-    .value-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:10px}
-    .value-card p{font-size:0.86rem;color:var(--gris-medio);line-height:1.65}
-
-    footer{background:#1a1a1a;color:rgba(255,255,255,0.7);margin-top:80px}
-    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding:64px 48px;max-width:1200px;margin:0 auto}
-    .footer-brand .brand-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--blanco);margin-bottom:4px}
-    .footer-brand .brand-name span{color:var(--rojo)}
-    .footer-brand .tagline{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px}
-    .footer-brand p{font-size:0.85rem;line-height:1.7}
-    .footer-section h4{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blanco);font-weight:600;margin-bottom:18px}
-    .footer-section ul{list-style:none}
-    .footer-section ul li{margin-bottom:9px}
-    .footer-section ul a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;transition:color .2s}
-    .footer-section ul a:hover{color:var(--rojo)}
-    .social-links{display:flex;gap:10px;margin-top:20px}
-    .social-link{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;transition:background .2s,border-color .2s,color .2s}
-    .social-link:hover{background:var(--rojo);border-color:var(--rojo);color:var(--blanco)}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:18px 48px;display:flex;align-items:center;justify-content:space-between;font-size:0.75rem;color:rgba(255,255,255,0.3)}
-    .footer-bottom a{color:rgba(255,255,255,0.3);text-decoration:none;transition:color .2s}
-    .footer-bottom a:hover{color:var(--rojo)}
-    @media(max-width:900px){nav{padding:12px 20px}nav ul{display:none}.bio-hero{grid-template-columns:1fr}.bio-photo{min-height:300px}.bio-content{padding:48px 24px}.values{padding:60px 20px}.footer-top{grid-template-columns:1fr;padding:48px 20px}.footer-bottom{flex-direction:column;gap:10px;padding:18px 20px;text-align:center}}
-  </style>
+  <title>Acerca de mí – FrancoDenis Propiedades</title>
+  <link rel="stylesheet" href="./global.css">
+  <link rel="stylesheet" href="./acerca.css">
 </head>
 <body>
 
-<nav>
-  <div class="logo">
-    <img src="logo.png" alt="GrupoDen" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <div class="logo-placeholder" style="display:none">Grupo<span>Den</span></div>
-  </div>
-  <ul>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="FrancoDenis"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block'">
+    <span class="brand-logo" style="display:none">
+      <span class="part-franco">Franco</span><span class="part-denis">Denis</span>
+    </span>
+  </a>
+  <ul class="nav-links">
     <li><a href="index.html">Inicio</a></li>
     <li><a href="departamentos.html">Departamentos</a></li>
     <li><a href="casas.html">Casas</a></li>
@@ -127,97 +29,116 @@
 <div class="red-bar"></div>
 
 <section class="bio-hero">
+
+  <!-- ══════════════════════════════════════════════════
+       FOTO DE PERFIL
+       Para cambiar la imagen, reemplazá el atributo src:
+         <img src="TU-FOTO.jpg" alt="Franco Denis">
+       Podés usar una ruta local (foto.jpg) o una URL.
+       ══════════════════════════════════════════════════ -->
   <div class="bio-photo">
-    <!-- Reemplazá el fondo con tu foto: <img src="tu-foto.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.9"> -->
-    <div class="photo-placeholder">
-      <span class="icon">🧑‍💼</span>
-      Agregar foto de perfil
+    <img src="./img/foto-perfil.PNG" alt="Franco Damián Denis"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="bio-photo-placeholder" style="display:none">
+      <span class="ph-icon">🧑‍💼</span>
+      <span>Reemplazá src="foto-perfil.jpg"<br>con tu imagen de perfil</span>
     </div>
-    <div class="red-accent"></div>
+    <div class="bio-photo-accent"></div>
   </div>
+
   <div class="bio-content">
-    <p class="eyebrow">Corredor Inmobiliario</p>
+    <p class="section-eyebrow">Corredor Inmobiliario Matriculado</p>
     <h1>Franco Damián<br>Denis</h1>
-    <p class="subtitle">Propiedades y Desarrollo · GrupoDen</p>
+    <p class="bio-subtitle">FrancoDenis Propiedades</p>
+
     <p>
-      Soy corredor inmobiliario matriculado con más de una década de experiencia en el mercado 
-      de Victoria, Entre Ríos y Rosario, Santa Fe. Mi trabajo se basa en la confianza, la 
-      transparencia y el compromiso real con cada cliente.
+      Soy corredor inmobiliario matriculado con más de una década de experiencia en el mercado
+      de Rosario, Santa Fe. Mi trabajo se basa en la confianza, la transparencia y el compromiso
+      real con cada cliente.
     </p>
     <p>
-      Acompaño cada operación desde la primera consulta hasta la firma de escritura, 
-      brindando asesoramiento personalizado, conocimiento profundo del mercado local y 
-      atención ágil por todos los canales.
+      Acompaño cada operación desde la primera consulta hasta la firma de escritura,
+      brindando asesoramiento personalizado, conocimiento profundo del mercado local
+      y atención ágil por todos los canales.
     </p>
+
     <div class="credentials">
       <div class="credential">
-        <div class="credential-icon">📋</div>
+        <div class="cred-icon">📋</div>
         <span>Matrícula 2609 COCIR</span>
       </div>
       <div class="credential">
-        <div class="credential-icon">📋</div>
+        <div class="cred-icon">📋</div>
         <span>Matrícula 1504 CCPIER</span>
       </div>
       <div class="credential">
-        <div class="credential-icon">📍</div>
-        <span>Victoria, Entre Ríos · Rosario, Santa Fe</span>
+        <div class="cred-icon">📍</div>
+        <span>Rosario, Santa Fe</span>
       </div>
     </div>
+
     <div class="contact-chips">
-      <a href="https://wa.me/5493436619727" target="_blank" class="chip">💬 WhatsApp</a>
-      <a href="https://www.instagram.com/grupo.den" target="_blank" class="chip">📸 Instagram</a>
-      <a href="https://www.facebook.com/grupo.den" target="_blank" class="chip">👥 Facebook</a>
-      <a href="mailto:contactogrupoden@gmail.com" class="chip">✉ Email</a>
+      <a href="https://wa.me/5493436619727"           target="_blank" class="chip">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/grupo.den"   target="_blank" class="chip">📸 Instagram</a>
+      <a href="https://www.facebook.com/grupo.den"    target="_blank" class="chip">👥 Facebook</a>
+      <a href="mailto:contactogrupoden@gmail.com"                     class="chip">✉ Email</a>
     </div>
   </div>
+
 </section>
 
 <section class="values">
-  <h2>¿Por qué elegirme?</h2>
+  <div class="values-header">
+    <p class="section-eyebrow">Mi filosofía</p>
+    <h2 class="section-title">¿Por qué elegirme?</h2>
+  </div>
   <div class="values-grid">
     <div class="value-card">
-      <div class="value-icon">🤝</div>
+      <div class="v-icon">🤝</div>
       <h3>Confianza</h3>
-      <p>Trabajo con total transparencia en cada etapa de la operación. Tu seguridad jurídica y económica es mi prioridad.</p>
+      <p>Trabajo con total transparencia en cada etapa. Tu seguridad jurídica y económica es mi prioridad.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">🗺️</div>
+      <div class="v-icon">🗺️</div>
       <h3>Conocimiento local</h3>
-      <p>Profundo conocimiento del mercado en Victoria y Rosario, para asesorarte con datos reales y actualizados.</p>
+      <p>Profundo conocimiento del mercado en Rosario, para asesorarte con datos reales y actualizados.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">⚡</div>
+      <div class="v-icon">⚡</div>
       <h3>Respuesta ágil</h3>
-      <p>Atención personalizada y rápida respuesta por WhatsApp, Instagram y email. Siempre disponible para vos.</p>
+      <p>Atención personalizada y rápida respuesta por WhatsApp, Instagram y email. Siempre disponible.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">🏆</div>
+      <div class="v-icon">🏆</div>
       <h3>Experiencia</h3>
       <p>Más de 10 años en el rubro con cientos de operaciones exitosas de venta, alquiler y desarrollo.</p>
     </div>
   </div>
 </section>
 
-<footer>
+<footer class="site-footer">
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="brand-name">Grupo<span>Den</span></div>
-      <div class="tagline">Propiedades y Desarrollo</div>
+      <span class="brand-logo">
+        <span class="part-franco-footer">Franco</span><span class="part-denis">Denis</span>
+      </span>
+      <div class="tagline">Propiedades</div>
       <p>Asesoramiento inmobiliario profesional. Matrícula 2609 COCIR · Matrícula 1504 CCPIER.<br>Franco Damián Denis.</p>
-      <div class="social-links">
-        <a href="https://www.facebook.com/grupo.den" target="_blank" class="social-link">f</a>
-        <a href="https://www.instagram.com/grupo.den" target="_blank" class="social-link">ig</a>
-        <a href="https://wa.me/5493436619727" target="_blank" class="social-link">✉</a>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/grupo.den"  target="_blank" class="social-btn">f</a>
+        <a href="https://www.instagram.com/grupo.den" target="_blank" class="social-btn">ig</a>
+        <a href="https://wa.me/5493436619727"         target="_blank" class="social-btn">✉</a>
       </div>
     </div>
-    <div class="footer-section"><h4>Propiedades</h4><ul><li><a href="departamentos.html">Departamentos</a></li><li><a href="casas.html">Casas</a></li><li><a href="local-comercial.html">Locales Comerciales</a></li></ul></div>
-    <div class="footer-section"><h4>Empresa</h4><ul><li><a href="acerca-de-mi.html">Acerca de mí</a></li><li><a href="privacidad.html">Privacidad</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
-    <div class="footer-section"><h4>Contacto</h4><ul><li><a href="https://wa.me/5493436619727">+549 3436 619727</a></li><li><a href="mailto:contactogrupoden@gmail.com">contactogrupoden@gmail.com</a></li><li><a href="#">Victoria, Entre Ríos</a></li><li><a href="#">Rosario, Santa Fe</a></li></ul></div>
+    <div class="footer-col"><h4>Propiedades</h4><ul><li><a href="departamentos.html">Departamentos</a></li><li><a href="casas.html">Casas</a></li><li><a href="local-comercial.html">Locales Comerciales</a></li></ul></div>
+    <div class="footer-col"><h4>Empresa</h4><ul><li><a href="acerca-de-mi.html">Acerca de mí</a></li><li><a href="privacidad.html">Privacidad</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="https://wa.me/5493436619727">+549 3436 619727</a></li><li><a href="mailto:contactogrupoden@gmail.com">contactogrupoden@gmail.com</a></li><li><a href="#">Rosario, Santa Fe</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 GrupoDen · Franco Damián Denis</span>
+    <span>© 2025 FrancoDenis Propiedades · Franco Damián Denis</span>
     <span><a href="privacidad.html">Privacidad</a> &nbsp;·&nbsp; <a href="contacto.html">Contacto</a></span>
   </div>
 </footer>
+
 </body>
 </html>

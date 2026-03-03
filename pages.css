@@ -1,0 +1,110 @@
+/* ================================================
+   PAGES.CSS – Contacto & Privacidad
+   ================================================ */
+
+/* CONTACTO */
+.contact-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 52px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.contact-intro h2 {
+  font-family: var(--font-display);
+  font-size: 1.9rem; font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.contact-intro > p {
+  font-size: 0.92rem; color: var(--gris-medio);
+  line-height: 1.8; margin-bottom: 12px;
+}
+.contact-cards { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+.contact-card {
+  display: flex; align-items: center; gap: 18px;
+  padding: 18px 22px;
+  border: 1px solid var(--borde);
+  border-radius: 3px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.contact-card:hover {
+  border-color: var(--rojo);
+  box-shadow: 0 4px 22px rgba(200,16,46,0.1);
+  transform: translateX(4px);
+}
+.c-icon {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0; color: var(--blanco);
+}
+.c-icon.wp   { background: #25D366; }
+.c-icon.ig   { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+.c-icon.fb   { background: #1877F2; }
+.c-icon.mail { background: var(--rojo); }
+.c-label {
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gris-claro); margin-bottom: 3px;
+}
+.c-value { font-size: 0.9rem; font-weight: 600; color: var(--gris); }
+
+.contact-aside {
+  background: var(--crema);
+  border-radius: 3px;
+  padding: 36px;
+  border-top: 4px solid var(--rojo);
+}
+.contact-aside h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 14px;
+}
+.contact-aside > p {
+  font-size: 0.87rem; color: var(--gris-medio);
+  line-height: 1.75; margin-bottom: 12px;
+}
+.hours { margin-top: 18px; }
+.hours-row {
+  display: flex; justify-content: space-between;
+  padding: 9px 0; border-bottom: 1px solid var(--borde);
+  font-size: 0.84rem;
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-row .day  { color: var(--gris-medio); }
+.hours-row .time { font-weight: 600; color: var(--gris); }
+
+/* PRIVACIDAD */
+.privacy-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 52px;
+}
+.notice-box {
+  background: var(--crema);
+  border-left: 4px solid var(--rojo);
+  padding: 24px 28px;
+  border-radius: 0 3px 3px 0;
+  margin-bottom: 40px;
+}
+.notice-box p { font-size: 0.97rem; line-height: 1.75; }
+.notice-box strong { color: var(--rojo); }
+.privacy-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 700;
+  margin: 36px 0 12px; color: var(--gris);
+}
+.privacy-content p {
+  font-size: 0.92rem; color: var(--gris-medio);
+  line-height: 1.8; margin-bottom: 14px;
+}
+.privacy-content a { color: var(--rojo); }
+
+@media (max-width: 960px) {
+  .contact-section { padding: 48px 20px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .privacy-content { padding: 48px 20px; }
+}

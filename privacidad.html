@@ -3,64 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidad – GrupoDen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{--rojo:#C8102E;--gris:#2b2b2b;--gris-medio:#555;--blanco:#ffffff;--crema:#f8f6f3;--borde:#e0dbd5}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Barlow',sans-serif;color:var(--gris);background:var(--blanco)}
-    nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:var(--blanco);border-bottom:1px solid var(--borde)}
-    .logo img{height:44px;width:auto}
-    .logo-placeholder{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900}
-    .logo-placeholder span{color:var(--rojo)}
-    nav ul{list-style:none;display:flex;gap:28px;align-items:center}
-    nav ul a{text-decoration:none;color:var(--gris-medio);font-size:0.85rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s}
-    nav ul a:hover{color:var(--rojo)}
-    .nav-cta{background:var(--rojo)!important;color:var(--blanco)!important;padding:9px 20px;border-radius:2px}
-    .red-bar{height:4px;background:var(--rojo)}
-    .page-header{background:var(--gris);padding:72px 48px;text-align:center}
-    .page-header h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--blanco)}
-    .page-header p{color:rgba(255,255,255,0.55);margin-top:10px;font-weight:300}
-    .content{max-width:780px;margin:0 auto;padding:72px 48px}
-    .notice-box{
-      background:var(--crema);border-left:4px solid var(--rojo);
-      padding:24px 28px;border-radius:0 4px 4px 0;margin-bottom:40px;
-    }
-    .notice-box p{font-size:1rem;line-height:1.7;color:var(--gris)}
-    .notice-box strong{color:var(--rojo)}
-    h2{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin:36px 0 12px;color:var(--gris)}
-    p{font-size:0.95rem;color:var(--gris-medio);line-height:1.8;margin-bottom:16px}
-    footer{background:#1a1a1a;color:rgba(255,255,255,0.7);margin-top:80px}
-    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding:64px 48px;max-width:1200px;margin:0 auto}
-    .footer-brand .brand-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--blanco);margin-bottom:4px}
-    .footer-brand .brand-name span{color:var(--rojo)}
-    .footer-brand .tagline{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px}
-    .footer-brand p{font-size:0.85rem;line-height:1.7}
-    .footer-section h4{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blanco);font-weight:600;margin-bottom:18px}
-    .footer-section ul{list-style:none}
-    .footer-section ul li{margin-bottom:9px}
-    .footer-section ul a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;transition:color .2s}
-    .footer-section ul a:hover{color:var(--rojo)}
-    .social-links{display:flex;gap:10px;margin-top:20px}
-    .social-link{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;transition:background .2s,border-color .2s,color .2s}
-    .social-link:hover{background:var(--rojo);border-color:var(--rojo);color:var(--blanco)}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:18px 48px;display:flex;align-items:center;justify-content:space-between;font-size:0.75rem;color:rgba(255,255,255,0.3)}
-    .footer-bottom a{color:rgba(255,255,255,0.3);text-decoration:none;transition:color .2s}
-    .footer-bottom a:hover{color:var(--rojo)}
-    @media(max-width:768px){nav{padding:12px 20px}nav ul{display:none}.page-header{padding:48px 20px}.content{padding:48px 20px}.footer-top{grid-template-columns:1fr;padding:48px 20px}.footer-bottom{flex-direction:column;gap:10px;padding:18px 20px;text-align:center}}
-  </style>
+  <title>Política de Privacidad – FrancoDenis Propiedades</title>
+  <link rel="stylesheet" href="./global.css">
+  <link rel="stylesheet" href="./pages.css">
 </head>
 <body>
-<nav>
-  <div class="logo">
-    <img src="logo.png" alt="GrupoDen" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <div class="logo-placeholder" style="display:none">Grupo<span>Den</span></div>
-  </div>
-  <ul>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="FrancoDenis"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block'">
+    <span class="brand-logo" style="display:none">
+      <span class="part-franco">Franco</span><span class="part-denis">Denis</span>
+    </span>
+  </a>
+  <ul class="nav-links">
     <li><a href="index.html">Inicio</a></li>
     <li><a href="departamentos.html">Departamentos</a></li>
     <li><a href="casas.html">Casas</a></li>
-    <li><a href="local-comercial.html">Locales</a></li>
+    <li><a href="local-comercial.html">Locales Comerciales</a></li>
     <li><a href="acerca-de-mi.html">Acerca de mí</a></li>
     <li><a href="https://wa.me/5493436619727" target="_blank" class="nav-cta">Contacto</a></li>
   </ul>
@@ -68,86 +29,94 @@
 <div class="red-bar"></div>
 
 <div class="page-header">
-  <h1>Política de Privacidad</h1>
-  <p>Transparencia total sobre el uso de este sitio web</p>
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Inicio</a> / Privacidad</div>
+    <h1>Política de Privacidad</h1>
+    <p>Transparencia total sobre el uso de este sitio web.</p>
+  </div>
 </div>
 <div class="red-bar"></div>
 
-<main class="content">
+<main class="privacy-content">
+
   <div class="notice-box">
     <p>
-      <strong>Este sitio web no recopila datos personales, no utiliza cookies de seguimiento 
+      <strong>Este sitio web no recopila datos personales, no utiliza cookies de seguimiento
       y no emplea ningún sistema de rastreo o analítica de terceros.</strong><br><br>
-      El presente sitio es exclusivamente un catálogo estático de propiedades en venta y alquiler 
-      de GrupoDen. Está diseñado para que puedas explorar las propiedades disponibles de forma 
-      completamente privada y sin ningún tipo de vigilancia digital.
+      Es exclusivamente un catálogo estático de propiedades de FrancoDenis Propiedades.
+      Podés explorar las propiedades disponibles de forma completamente privada,
+      sin ningún tipo de vigilancia digital.
     </p>
   </div>
 
   <h2>¿Qué información recopilamos?</h2>
   <p>
-    Ninguna. Este sitio web no contiene formularios de registro, no requiere que ingreses datos 
-    personales y no utiliza cookies de ningún tipo. No hay sistemas de login, suscripción 
+    Ninguna. Este sitio no contiene formularios de registro, no requiere que ingreses datos
+    personales y no utiliza cookies de ningún tipo. No hay sistemas de login, suscripción
     ni registro de usuarios.
   </p>
 
   <h2>¿Usamos cookies?</h2>
   <p>
-    No. Este sitio no instala cookies en tu dispositivo, ni propias ni de terceros. 
-    No utilizamos herramientas de analítica web como Google Analytics, Facebook Pixel, 
+    No. Este sitio no instala cookies en tu dispositivo, ni propias ni de terceros.
+    No utilizamos herramientas de analítica web como Google Analytics, Facebook Pixel,
     ni ningún sistema de seguimiento similar.
   </p>
 
   <h2>¿Compartimos datos con terceros?</h2>
   <p>
-    No existe información que compartir, dado que no recopilamos ningún dato. 
-    Si decidís contactarnos a través de WhatsApp, Instagram, Facebook o correo electrónico, 
+    No existe información que compartir, dado que no recopilamos ningún dato.
+    Si decidís contactarnos a través de WhatsApp, Instagram, Facebook o correo electrónico,
     esa comunicación se rige por las políticas de privacidad de cada plataforma respectiva.
   </p>
 
   <h2>¿Qué pasa cuando clickeás en WhatsApp o redes sociales?</h2>
   <p>
-    Al presionar los botones de contacto por WhatsApp, Instagram o Facebook, serás redirigido/a 
-    a esas plataformas externas. En ese momento, las políticas de privacidad de dichos servicios 
-    son las que aplican. GrupoDen no tiene control sobre esas plataformas.
+    Al presionar los botones de contacto, serás redirigido/a a esas plataformas externas.
+    En ese momento, las políticas de privacidad de dichos servicios son las que aplican.
+    FrancoDenis Propiedades no tiene control sobre esas plataformas.
   </p>
 
   <h2>Propósito del sitio</h2>
   <p>
-    Este sitio es únicamente una landing page de catálogo inmobiliario. Su único objetivo es 
-    mostrarte las propiedades disponibles de GrupoDen para que puedas evaluarlas y, si te interesa 
-    alguna, contactarte directamente con Franco Damián Denis a través de las vías indicadas.
+    Este sitio es únicamente una landing page de catálogo inmobiliario. Su único objetivo es
+    mostrarte las propiedades disponibles para que puedas evaluarlas y, si te interesa alguna,
+    contactarte directamente con Franco Damián Denis a través de las vías indicadas.
   </p>
 
   <h2>Contacto</h2>
   <p>
-    Si tenés preguntas sobre esta política de privacidad o sobre nuestras prácticas, 
-    podés contactarnos en: <a href="mailto:contactogrupoden@gmail.com" style="color:var(--rojo)">contactogrupoden@gmail.com</a> 
+    Si tenés preguntas sobre esta política, podés escribirnos a
+    <a href="mailto:contactogrupoden@gmail.com">contactogrupoden@gmail.com</a>
     o por WhatsApp al +549 3436 619727.
   </p>
   <p>Última actualización: 2025.</p>
+
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="brand-name">Grupo<span>Den</span></div>
-      <div class="tagline">Propiedades y Desarrollo</div>
+      <span class="brand-logo">
+        <span class="part-franco-footer">Franco</span><span class="part-denis">Denis</span>
+      </span>
+      <div class="tagline">Propiedades</div>
       <p>Asesoramiento inmobiliario profesional. Matrícula 2609 COCIR · Matrícula 1504 CCPIER.<br>Franco Damián Denis.</p>
-      <div class="social-links">
-        <a href="https://www.facebook.com/grupo.den" target="_blank" class="social-link">f</a>
-        <a href="https://www.instagram.com/grupo.den" target="_blank" class="social-link">ig</a>
-        <a href="https://wa.me/5493436619727" target="_blank" class="social-link">✉</a>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/grupo.den"  target="_blank" class="social-btn">f</a>
+        <a href="https://www.instagram.com/grupo.den" target="_blank" class="social-btn">ig</a>
+        <a href="https://wa.me/5493436619727"         target="_blank" class="social-btn">✉</a>
       </div>
     </div>
-    <div class="footer-section"><h4>Propiedades</h4><ul><li><a href="departamentos.html">Departamentos</a></li><li><a href="casas.html">Casas</a></li><li><a href="local-comercial.html">Locales Comerciales</a></li></ul></div>
-    <div class="footer-section"><h4>Empresa</h4><ul><li><a href="acerca-de-mi.html">Acerca de mí</a></li><li><a href="privacidad.html">Privacidad</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
-    <div class="footer-section"><h4>Contacto</h4><ul><li><a href="https://wa.me/5493436619727">+549 3436 619727</a></li><li><a href="mailto:contactogrupoden@gmail.com">contactogrupoden@gmail.com</a></li><li><a href="#">Victoria, Entre Ríos</a></li><li><a href="#">Rosario, Santa Fe</a></li></ul></div>
+    <div class="footer-col"><h4>Propiedades</h4><ul><li><a href="departamentos.html">Departamentos</a></li><li><a href="casas.html">Casas</a></li><li><a href="local-comercial.html">Locales Comerciales</a></li></ul></div>
+    <div class="footer-col"><h4>Empresa</h4><ul><li><a href="acerca-de-mi.html">Acerca de mí</a></li><li><a href="privacidad.html">Privacidad</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="https://wa.me/5493436619727">+549 3436 619727</a></li><li><a href="mailto:contactogrupoden@gmail.com">contactogrupoden@gmail.com</a></li><li><a href="#">Rosario, Santa Fe</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 GrupoDen · Franco Damián Denis</span>
+    <span>© 2025 FrancoDenis Propiedades · Franco Damián Denis</span>
     <span><a href="privacidad.html">Privacidad</a> &nbsp;·&nbsp; <a href="contacto.html">Contacto</a></span>
   </div>
 </footer>
+
 </body>
 </html>
