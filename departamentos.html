@@ -6,6 +6,18 @@
   <title>Departamentos – FrancoDenis Propiedades</title>
   <link rel="stylesheet" href="./global.css">
 </head>
+<script>
+const _cs = {};
+function _get(id){ if(!_cs[id]) _cs[id]={cur:0}; return _cs[id]; }
+function _tot(id){ return document.querySelectorAll('#'+id+' .carousel-slide').length; }
+function _upd(id){
+  const s=_get(id), t=_tot(id);
+  document.querySelector('#'+id+' .carousel-track').style.transform='translateX(-'+(s.cur*100)+'%)';
+  document.querySelector('#'+id+' .photo-count').textContent=(s.cur+1)+' / '+t;
+}
+function moveCarousel(id,dir){ const s=_get(id),t=_tot(id); s.cur=(s.cur+dir+t)%t; _upd(id); }
+function goToSlide(id,i){ _get(id).cur=i; _upd(id); }
+</script>
 <body>
 
 <nav class="nav">
@@ -67,25 +79,23 @@
     </div>
     <div class="property-carousel" id="carousel-1">
       <div class="carousel-track">
-        <div class="carousel-slide">
-          <!-- Reemplazá por: <img src="fotos/depto1-foto1.jpg" alt="Foto 1"> -->
-          <div class="slide-placeholder"><span class="ph-icon">📷</span><span>Foto 1 – Agregar imagen</span></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slide-placeholder"><span class="ph-icon">📷</span><span>Foto 2 – Agregar imagen</span></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slide-placeholder"><span class="ph-icon">📷</span><span>Foto 3 – Agregar imagen</span></div>
-        </div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto1.jpg" alt="Foto 1"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto2.jpg" alt="Foto 2"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto3.jpg" alt="Foto 3"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto4.jpg" alt="Foto 4"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto5.jpg" alt="Foto 5"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto6.jpg" alt="Foto 6"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto7.jpg" alt="Foto 7"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto8.jpg" alt="Foto 8"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto9.jpg" alt="Foto 9"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto10.jpg" alt="Foto 10"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto11.jpg" alt="Foto 11"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto12.jpg" alt="Foto 12"></div>
+        <div class="carousel-slide"><img src="fotos/dpto-piso7-foto13.jpg" alt="Foto 13"></div>
       </div>
       <button class="carousel-btn prev" onclick="moveCarousel('carousel-1',-1)">‹</button>
       <button class="carousel-btn next" onclick="moveCarousel('carousel-1', 1)">›</button>
-      <div class="carousel-dots" id="dots-carousel-1">
-        <div class="dot active" onclick="goToSlide('carousel-1',0)"></div>
-        <div class="dot"        onclick="goToSlide('carousel-1',1)"></div>
-        <div class="dot"        onclick="goToSlide('carousel-1',2)"></div>
-      </div>
-      <div class="photo-count">1 / 3</div>
+      <div class="photo-count">1 / 13</div>
     </div>
   </article>
 
@@ -93,46 +103,49 @@
   <article class="property-entry" id="prop-2">
     <div class="property-info">
       <span class="prop-badge">En Venta</span>
-      <h3>Departamento 3 ambientes – Barrio Norte</h3>
+      <h3><b>Exclusiva Unidad en Montevideo 1918 – Piso 7:</b> Semipiso luminoso con ventilación cruzada en ubicación estratégica</h3>
       <p class="prop-location">📍 Rosario, Santa Fe</p>
-      <div class="prop-price">USD 85.000 <small>precio total</small></div>
+      <div class="prop-price">$450,000.00 </div>
       <div class="prop-divider"></div>
-      <p>
-        Espectacular departamento de 3 ambientes en zona residencial. Living-comedor con balcón corrido,
-        cocina integrada de diseño, 2 dormitorios en suite y baño de visitas.
-        Terminaciones premium: pisos flotantes, mesada de granito y luminarias embutidas.
-        Edificio con amenities: piscina, SUM y seguridad 24 hs. Excelente inversión.
-      </p>
-      <div class="prop-features">
-        <div class="feature"><div class="feat-icon">🛏</div> 2 Dormitorios</div>
-        <div class="feature"><div class="feat-icon">🚿</div> 2 Baños</div>
-        <div class="feature"><div class="feat-icon">📐</div> 78 m²</div>
-        <div class="feature"><div class="feat-icon">🏊</div> Amenities</div>
-        <div class="feature"><div class="feat-icon">🅿</div> Cochera</div>
-      </div>
+      <p>🚀 <b>¡Oportunidad ideal para estudiantes o inversión!</b> Disfrutá de la comodidad de vivir en un semipiso con ventilación cruzada en el corazón de la zona universitaria. Un departamento luminoso, funcional y con una ubicación estratégica que conecta con toda la ciudad.</p>
+
+<p>🏢 <b>Tipo:</b> Semipiso con ventilación cruzada.</p>
+<p>✨ <b>Características:</b> Cocina separada del living comedor, gas natural, placard y balcón.</p>
+<p>📍 <b>Destacado:</b> Muy luminoso y en ubicación estratégica (zona de universidades, comercios y múltiples líneas de colectivos).</p>
+<p>📋 <b>Expensas:</b> $45.000</p>
       <a href="https://wa.me/5493436619727?text=Hola%20Franco%2C%20me%20interesa%20el%20departamento%203%20ambientes%20barrio%20norte" target="_blank" class="btn-contact">Consultar por WhatsApp</a>
     </div>
     <div class="property-carousel" id="carousel-2">
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <div class="slide-placeholder"><span class="ph-icon">📷</span><span>Foto 1 – Agregar imagen</span></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slide-placeholder"><span class="ph-icon">📷</span><span>Foto 2 – Agregar imagen</span></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slide-placeholder"><span class="ph-icon">📷</span><span>Foto 3 – Agregar imagen</span></div>
-        </div>
-      </div>
-      <button class="carousel-btn prev" onclick="moveCarousel('carousel-2',-1)">‹</button>
-      <button class="carousel-btn next" onclick="moveCarousel('carousel-2', 1)">›</button>
-      <div class="carousel-dots" id="dots-carousel-2">
-        <div class="dot active" onclick="goToSlide('carousel-2',0)"></div>
-        <div class="dot"        onclick="goToSlide('carousel-2',1)"></div>
-        <div class="dot"        onclick="goToSlide('carousel-2',2)"></div>
-      </div>
-      <div class="photo-count">1 / 3</div>
-    </div>
+  <div class="carousel-track">
+
+    <div class="carousel-slide"><img src="./img/montevideo-piso7/dpto-piso7-foto1.jpg" alt="Foto 1"></div>
+    <div class="carousel-slide"><img src="./img/montevideo-piso7/dpto-piso7-foto2.jpg" alt="Foto 2"></div>
+    <div class="carousel-slide"><img src="./img/montevideo-piso7/dpto-piso7-foto3.jpg" alt="Foto 3"></div>
+    <div class="carousel-slide"><img src="./img/montevideo-piso7/dpto-piso7-foto4.jpg" alt="Foto 4"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto5.jpg" alt="Foto 5"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto6.jpg" alt="Foto 6"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto7.jpg" alt="Foto 7"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto8.jpg" alt="Foto 8"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto9.jpg" alt="Foto 9"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto10.jpg" alt="Foto 10"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto11.jpg" alt="Foto 11"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto12.jpg" alt="Foto 12"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto13.jpg" alt="Foto 13"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto14.jpg" alt="Foto 14"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto15.jpg" alt="Foto 15"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto16.jpg" alt="Foto 16"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto17.jpg" alt="Foto 17"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto18.jpg" alt="Foto 18"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto19.jpg" alt="Foto 19"></div>
+    <div class="carousel-slide"><img src="./img/casa-peron/casa1-venta-foto20.jpg" alt="Foto 20"></div>
+
+  </div>
+
+  <button class="carousel-btn prev" onclick="moveCarousel('carousel-2',-1)">‹</button>
+  <button class="carousel-btn next" onclick="moveCarousel('carousel-2', 1)">›</button>
+
+  <div class="photo-count">1 / 20</div>
+</div>
   </article>
 
 </main>
@@ -171,7 +184,7 @@
       <h4>Contacto</h4>
       <ul>
         <li><a href="https://wa.me/5493436619727">+549 3436 619727</a></li>
-        <li><a href="mailto:contactogrupoden@gmail.com">contactogrupoden@gmail.com</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#b9dad6d7cdd8dacdd6decbccc9d6dddcd7f9ded4d8d0d597dad6d4"><span class="__cf_email__" data-cfemail="adcec2c3d9ccced9c2cadfd8ddc2c9c8c3edcac0ccc4c183cec2c0">[email&#160;protected]</span></a></li>
         <li><a href="#">Rosario, Santa Fe</a></li>
       </ul>
     </div>
@@ -182,7 +195,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const _cs = {};
 function _get(id){ if(!_cs[id]) _cs[id]={cur:0}; return _cs[id]; }
 function _tot(id){ return document.querySelectorAll('#'+id+' .carousel-slide').length; }
@@ -190,10 +203,3 @@ function _upd(id){
   const s=_get(id), t=_tot(id);
   document.querySelector('#'+id+' .carousel-track').style.transform='translateX(-'+(s.cur*100)+'%)';
   document.querySelectorAll('#dots-'+id+' .dot').forEach((d,i)=>d.classList.toggle('active',i===s.cur));
-  document.querySelector('#'+id+' .photo-count').textContent=(s.cur+1)+' / '+t;
-}
-function moveCarousel(id,dir){ const s=_get(id),t=_tot(id); s.cur=(s.cur+dir+t)%t; _upd(id); }
-function goToSlide(id,i){ _get(id).cur=i; _upd(id); }
-</script>
-</body>
-</html>
