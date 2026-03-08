@@ -1,0 +1,180 @@
+/* ========================
+   PRIVACIDAD — estilos propios
+   (complementa global.css)
+======================== */
+
+.privacy-main {
+  background: var(--crema);
+  padding: 4rem 2rem 6rem;
+}
+.privacy-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* ENCABEZADO */
+.privacy-header {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.privacy-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.privacy-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--rojo);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.privacy-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--gris);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+.privacy-meta {
+  font-size: 0.78rem;
+  color: var(--gris-claro);
+  letter-spacing: 0.04em;
+}
+
+/* BLOQUE DESTACADO */
+.privacy-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--rojo);
+  border-radius: 3px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  opacity: 0;
+  transform: translateY(20px);
+}
+.privacy-highlight.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.privacy-highlight-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+.privacy-highlight p {
+  font-size: 0.97rem;
+  color: var(--gris);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+.privacy-highlight strong { color: var(--rojo); font-weight: 600; }
+
+/* SECCIONES */
+.privacy-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--borde);
+  border-radius: 3px;
+  background: var(--blanco);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+.privacy-section {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 1.5rem;
+  padding: 2rem 2.2rem;
+  border-bottom: 1px solid var(--borde);
+  opacity: 0;
+  transform: translateY(16px);
+}
+.privacy-section:last-child { border-bottom: none; }
+.privacy-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.privacy-section-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--borde);
+  font-weight: 700;
+  padding-top: 3px;
+  line-height: 1;
+}
+.privacy-section-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gris);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+.privacy-section-body p {
+  font-size: 0.92rem;
+  color: var(--gris-medio);
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+.privacy-section-body p:last-child { margin-bottom: 0; }
+.privacy-section-body ul {
+  margin: 0.2rem 0 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.privacy-section-body ul li {
+  font-size: 0.9rem;
+  color: var(--gris-medio);
+  line-height: 1.6;
+}
+.privacy-section-body ul li::marker { color: var(--rojo); }
+.privacy-section-body strong { color: var(--gris); font-weight: 600; }
+
+/* BOTONES DE CONTACTO */
+.privacy-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.privacy-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 2px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--rojo);
+  color: var(--blanco);
+  transition: background 0.2s;
+}
+.privacy-contact-btn:hover { background: var(--rojo-oscuro); }
+.privacy-contact-btn.secondary {
+  background: none;
+  color: var(--rojo);
+  border: 1.5px solid var(--rojo);
+}
+.privacy-contact-btn.secondary:hover { background: var(--rojo); color: var(--blanco); }
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+  .privacy-section {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .privacy-section-num { font-size: 1rem; }
+  .privacy-contact-links { flex-direction: column; }
+  .privacy-contact-btn { justify-content: center; }
+}
