@@ -273,7 +273,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const _cs = {};
 function _get(id){ if(!_cs[id]) _cs[id]={cur:0}; return _cs[id]; }
 function _tot(id){ return document.querySelectorAll('#'+id+' .carousel-slide').length; }
@@ -282,4 +282,8 @@ function _upd(id){
   document.querySelector('#'+id+' .carousel-track').style.transform='translateX(-'+(s.cur*100)+'%)';
   document.querySelector('#'+id+' .photo-count').textContent=(s.cur+1)+' / '+t;
 }
-function moveCar
+function moveCarousel(id,dir){ const s=_get(id),t=_tot(id); s.cur=(s.cur+dir+t)%t; _upd(id); }
+function goToSlide(id,i){ _get(id).cur=i; _upd(id); }
+</script>
+</body>
+</html>
