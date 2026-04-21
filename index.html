@@ -26,21 +26,6 @@
   <link rel="stylesheet" href="./global.css">
   <link rel="stylesheet" href="./index.css">
 </head>
-<script>
-  const toggle = document.getElementById('menuToggle');
-  const nav = document.querySelector('.nav');
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('nav--open');
-    toggle.setAttribute('aria-expanded', open);
-  });
-  // cerrar al hacer click en un link
-  document.querySelectorAll('.nav__mobile a').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('nav--open');
-      toggle.setAttribute('aria-expanded', false);
-    });
-  });
-</script>
 <body>
 
 <!-- NAV -->
@@ -216,5 +201,19 @@
   </div>
 </footer>
 
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.querySelector('.nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  document.querySelectorAll('.nav__mobile a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('nav--open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+</script>
 </body>
 </html>
