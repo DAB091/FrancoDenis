@@ -267,7 +267,18 @@
 </footer>
 
 <script>
-    const toggle = document.getElementById('menuToggle');
+const _cs = {};
+function _get(id){ if(!_cs[id]) _cs[id]={cur:0}; return _cs[id]; }
+function _tot(id){ return document.querySelectorAll('#'+id+' .carousel-slide').length; }
+function _upd(id){
+  const s=_get(id), t=_tot(id);
+  document.querySelector('#'+id+' .carousel-track').style.transform='translateX(-'+(s.cur*100)+'%)';
+  document.querySelector('#'+id+' .photo-count').textContent=(s.cur+1)+' / '+t;
+}
+function moveCarousel(id,dir){ const s=_get(id),t=_tot(id); s.cur=(s.cur+dir+t)%t; _upd(id); }
+function goToSlide(id,i){ _get(id).cur=i; _upd(id); }
+
+const toggle = document.getElementById('menuToggle');
   const nav = document.querySelector('.nav');
   toggle.addEventListener('click', () => {
     const open = nav.classList.toggle('nav--open');
@@ -279,16 +290,6 @@
       toggle.setAttribute('aria-expanded', false);
     });
   });
-const _cs = {};
-function _get(id){ if(!_cs[id]) _cs[id]={cur:0}; return _cs[id]; }
-function _tot(id){ return document.querySelectorAll('#'+id+' .carousel-slide').length; }
-function _upd(id){
-  const s=_get(id), t=_tot(id);
-  document.querySelector('#'+id+' .carousel-track').style.transform='translateX(-'+(s.cur*100)+'%)';
-  document.querySelector('#'+id+' .photo-count').textContent=(s.cur+1)+' / '+t;
-}
-function moveCarousel(id,dir){ const s=_get(id),t=_tot(id); s.cur=(s.cur+dir+t)%t; _upd(id); }
-function goToSlide(id,i){ _get(id).cur=i; _upd(id); }
 </script>
 </body>
 </html>
