@@ -26,6 +26,21 @@
   <link rel="stylesheet" href="./global.css">
   <link rel="stylesheet" href="./index.css">
 </head>
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.querySelector('.nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  // cerrar al hacer click en un link
+  document.querySelectorAll('.nav__mobile a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('nav--open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+</script>
 <body>
 
 <!-- NAV -->
@@ -60,19 +75,19 @@
       </g>
     </svg>
   </button>
-
-  <!-- MOBILE MENU OVERLAY -->
-  <div class="nav__splash"></div>
-  <ul class="nav__mobile" id="mobileMenu">
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="departamentos.html">Departamentos</a></li>
-    <li><a href="casas.html">Casas</a></li>
-    <li><a href="local-comercial.html">Locales Comerciales</a></li>
-    <li><a href="acerca-de-mi.html">Acerca de mí</a></li>
-    <li><a href="https://wa.me/5493436619727" target="_blank">Contacto</a></li>
-  </ul>
 </nav>
 <div class="red-bar"></div>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="nav__splash"></div>
+<ul class="nav__mobile" id="mobileMenu">
+  <li><a href="index.html">Inicio</a></li>
+  <li><a href="departamentos.html">Departamentos</a></li>
+  <li><a href="casas.html">Casas</a></li>
+  <li><a href="local-comercial.html">Locales Comerciales</a></li>
+  <li><a href="acerca-de-mi.html">Acerca de mí</a></li>
+  <li><a href="https://wa.me/5493436619727" target="_blank">Contacto</a></li>
+</ul>
 
 <!-- HERO -->
 <section class="hero">
@@ -203,14 +218,13 @@
 
 <script>
   const toggle = document.getElementById('menuToggle');
-  const nav = document.querySelector('.nav');
   toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('nav--open');
+    const open = document.body.classList.toggle('nav--open');
     toggle.setAttribute('aria-expanded', open);
   });
   document.querySelectorAll('.nav__mobile a').forEach(link => {
     link.addEventListener('click', () => {
-      nav.classList.remove('nav--open');
+      document.body.classList.remove('nav--open');
       toggle.setAttribute('aria-expanded', false);
     });
   });
