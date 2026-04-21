@@ -543,7 +543,7 @@ a { color: inherit; text-decoration: none; }
 /* MOBILE MENU */
 .nav__mobile {
   position: fixed;
-  top: 68px;
+  top: 68px;        /* ← altura del nav */
   left: 0;
   right: 0;
   bottom: 0;
@@ -556,8 +556,6 @@ a { color: inherit; text-decoration: none; }
   list-style: none;
   visibility: hidden;
   pointer-events: none;
-  overflow-y: auto;
-  padding: 20px 0;
 }
 .nav__mobile li { opacity: 0; }
 .nav__mobile li:nth-child(1) { transform: translateY(-20px); }
@@ -571,11 +569,11 @@ a { color: inherit; text-decoration: none; }
 }
 .nav__mobile a {
   color: var(--blanco);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 0.9rem 2rem;
+  padding: 0.6rem 2rem;
   display: block;
   text-align: center;
   transition: color .2s;
