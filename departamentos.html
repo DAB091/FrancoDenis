@@ -306,17 +306,18 @@ function moveCarousel(id,dir){ const s=_get(id),t=_tot(id); s.cur=(s.cur+dir+t)%
 function goToSlide(id,i){ _get(id).cur=i; _upd(id); }
 
 const toggle = document.getElementById('menuToggle');
-  const nav = document.querySelector('.nav');
+if (toggle) {
   toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('nav--open');
+    const open = document.body.classList.toggle('nav--open');
     toggle.setAttribute('aria-expanded', open);
   });
   document.querySelectorAll('.nav__mobile a').forEach(link => {
     link.addEventListener('click', () => {
-      nav.classList.remove('nav--open');
+      document.body.classList.remove('nav--open');
       toggle.setAttribute('aria-expanded', false);
     });
   });
+}
 </script>
 </body>
 </html>
