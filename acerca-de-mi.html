@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
   <a href="index.html" class="nav-logo">
     <img src="logo.png" alt="FrancoDenis"
@@ -17,15 +18,50 @@
       <span class="part-franco">Franco</span><span class="part-denis">Denis</span>
     </span>
   </a>
+
   <ul class="nav-links">
     <li><a href="index.html">Inicio</a></li>
     <li><a href="departamentos.html">Departamentos</a></li>
     <li><a href="casas.html">Casas</a></li>
     <li><a href="local-comercial.html">Locales Comerciales</a></li>
-    <li><a href="acerca-de-mi.html" class="active">Acerca de mí</a></li>
+    <li><a href="acerca-de-mi.html">Acerca de mí</a></li>
     <li><a href="https://wa.me/5493436619727" target="_blank" class="nav-cta">Contacto</a></li>
   </ul>
+
+  <!-- HAMBURGER BUTTON -->
+  <button class="nav__toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">
+    <svg class="menuicon" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 50 50">
+      <title>Menú</title>
+      <g>
+        <line class="menuicon__bar" x1="13" y1="16.5" x2="37" y2="16.5"/>
+        <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
+        <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
+        <line class="menuicon__bar" x1="13" y1="32.5" x2="37" y2="32.5"/>
+        <circle class="menuicon__circle" r="23" cx="25" cy="25"/>
+      </g>
+    </svg>
+  </button>
 </nav>
+<div class="red-bar"></div>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="nav__splash"></div>
+<ul class="nav__mobile" id="mobileMenu">
+  <li><a href="index.html">Inicio</a></li>
+  <li><a href="departamentos.html">Departamentos</a></li>
+  <li><a href="casas.html">Casas</a></li>
+  <li><a href="local-comercial.html">Locales Comerciales</a></li>
+  <li><a href="acerca-de-mi.html">Acerca de mí</a></li>
+  <li><a href="https://wa.me/5493436619727" target="_blank">Contacto</a></li>
+</ul>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Inicio</a> / Casas</div>
+    <h1>Casas</h1>
+    <p>Propiedades amplias con espacios verdes y terminaciones de calidad en los mejores barrios.</p>
+  </div>
+</div>
 <div class="red-bar"></div>
 
 <section class="bio-hero">
@@ -132,6 +168,27 @@
     <span><a href="privacidad.html">Privacidad</a> &nbsp;·&nbsp; <a href="contacto.html">Contacto</a></span>
   </div>
 </footer>
+<script>
+const _cs={};
+function _get(id){if(!_cs[id])_cs[id]={cur:0};return _cs[id];}
+function _tot(id){return document.querySelectorAll('#'+id+' .carousel-slide').length;}
+function _upd(id){const s=_get(id),t=_tot(id);document.querySelector('#'+id+' .carousel-track').style.transform='translateX(-'+(s.cur*100)+'%)';document.querySelectorAll('#dots-'+id+' .dot').forEach((d,i)=>d.classList.toggle('active',i===s.cur));document.querySelector('#'+id+' .photo-count').textContent=(s.cur+1)+' / '+t;}
+function moveCarousel(id,dir){const s=_get(id),t=_tot(id);s.cur=(s.cur+dir+t)%t;_upd(id);}
+function goToSlide(id,i){_get(id).cur=i;_upd(id);}
 
+const toggle = document.getElementById('menuToggle');
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    const open = document.body.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  document.querySelectorAll('.nav__mobile a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('nav--open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+}
+</script>
 </body>
 </html>
