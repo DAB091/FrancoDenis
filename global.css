@@ -617,5 +617,6 @@ body.nav--open .nav__mobile li {
 }
 @media (min-width: 961px) {
   .nav__mobile,
-  .nav__splash { display: none !important; }
+  .nav__splash
+  .nav__toggle { display: none !important; }
 }
